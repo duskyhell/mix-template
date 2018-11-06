@@ -1,0 +1,209 @@
+// @import 'variable'
+
+#main {
+    float: right;
+    min-width: 360px;
+    width: calc(100% - #{$nav-width});
+    padding: 0 30px 20px 30px;
+
+    // TODO: 與 _common h1 合併
+    h1 {
+        &.page-title {
+            @include media-phone-width {
+                margin: 1em 0;
+            }
+        }
+    }
+
+    @include media-phone-width {
+        width: 100%;
+        min-width: 360px;
+    }
+
+    @include media-print {
+        float: none;
+        width: 100%;
+    }
+}
+
+section {
+    display: block;
+    background-color: #fff;
+    padding: 0;
+}
+
+header {
+    display: block
+}
+
+// http://usejsdoc.org/tags-variation.html
+.variation {
+    display: none
+}
+
+// 類別下方的說明文字
+.class-description {
+    font-size: 130%;
+    line-height: 140%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.class-description:empty {
+    margin: 0
+}
+
+.signature-attributes {
+    font-size: 60%;
+    color: $color-type-signature;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+// .important, .yes-def 是棄用標籤的, 後者是內容留空時顯示
+.important {
+    font-weight: bold;
+    color: $color-important;
+}
+
+.type-signature {
+    color: $color-type-signature
+}
+
+.name,
+.signature {
+    font-family: Consolas, Monaco, 'Andale Mono', monospace
+}
+
+.details {
+    margin-top: 14px;
+    border-left: 2px solid #DDD;
+    line-height: 30px;
+}
+
+.details dt {
+    width: 120px;
+    float: left;
+    padding-left: 10px;
+}
+
+.details dd {
+    margin-left: 70px
+}
+
+.details ul {
+    margin: 0
+}
+
+.details ul {
+    list-style-type: none
+}
+
+.details li {
+    margin-left: 30px
+}
+
+.details pre.prettyprint {
+    margin: 0
+}
+
+.details .object-value {
+    padding-top: 0
+}
+
+.description {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.code-caption {
+    font-style: italic;
+    font-size: 107%;
+    margin: 0;
+}
+
+
+.params,
+.props {
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    font-size: 14px;
+    /* margin-left: 15px; */
+}
+
+.params .name,
+.props .name,
+.name code {
+    color: #4D4E53;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    font-size: 100%;
+}
+
+.params td,
+.params th,
+.props td,
+.props th {
+    margin: 0px;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+    display: table-cell;
+}
+
+.params td {
+    border-top: 1px solid #eee
+}
+
+.params thead tr,
+.props thead tr {
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.params .params thead tr,
+.props .props thead tr {
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.params td.description>p:first-child,
+.props td.description>p:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.params td.description>p:last-child,
+.props td.description>p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+dl.param-type {
+    /* border-bottom: 1px solid hsl(0, 0%, 87%); */
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.param-type dt,
+.param-type dd {
+    display: inline-block
+}
+
+.param-type dd {
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.section-method {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}

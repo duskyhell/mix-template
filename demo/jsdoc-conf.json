@@ -1,0 +1,47 @@
+{
+    "//see": "http://usejsdoc.org/about-configuring-jsdoc.html",
+
+    "tags": {
+        "//": "http://usejsdoc.org/about-configuring-jsdoc.html#configuring-tags-and-tag-dictionaries",
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc"]
+    },
+    "source": {
+        "include": [
+            "demo/src"
+        ],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [
+        "plugins/markdown",
+        "plugins/category"
+    ],
+
+    "templates": {
+        "default": {
+            "outputSourceFiles": true,
+            "useLongnameInNav": false
+        }
+    },
+
+    "opts": {
+        "encoding": "utf8",
+        "sort": true,
+        "recurse": true,
+        "private": false,
+        "lenient": true,
+        "destination": "./demo_output",
+        "readme": "demo/src/README.md",
+        "tutorials": "demo/tutorial",
+        "_template": "templates/default",
+        "template": "./"
+
+    },
+
+    "//docWatchPath": "gulp-watch path list",
+    "docWatchPath": [
+        "assets/**/*.js",
+        "!assets/resources/**"
+    ]
+}

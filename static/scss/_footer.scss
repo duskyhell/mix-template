@@ -1,0 +1,27 @@
+/** Footer **/
+footer {
+    color: hsl(0, 0%, 28%);
+    margin-left: $nav-width;
+    display: block;
+    padding: 30px;
+    font-style: italic;
+    font-size: 90%;
+    border-top: 1px solid #eee;
+
+    @include media-phone-width {
+        margin-left: 0;
+    }
+}
+
+.ancestors {
+    color: #999
+}
+
+.ancestors a {
+    color: #999 !important;
+    text-decoration: none;
+}
+
+.clear {
+    clear: both
+}

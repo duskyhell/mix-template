@@ -1,0 +1,11 @@
+@mixin media-phone-width {
+    @media only screen and (min-width: 320px) and (max-width: 680px) {
+        @content
+    }
+};
+
+@mixin media-print {
+    @media only print {
+        @content
+    }
+};
