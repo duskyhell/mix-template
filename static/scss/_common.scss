@@ -1,3 +1,5 @@
+// @import 'variable'
+
 * {
     box-sizing: border-box
 }
@@ -9,8 +11,8 @@ body {
 }
 
 body {
-    color: #4d4e53;
-    background-color: white;
+    color: $color-body;
+    background-color: $background-color;
     margin: 0 auto;
     padding: 0;
     font-family: 'Source Sans Pro', Helvetica, sans-serif;
@@ -46,7 +48,7 @@ h4,
 h5,
 h6 {
     font-family: 'Roboto', sans-serif;
-    color: #000;
+    color: $color-h1_h6;
     font-weight: 400;
     margin: 0;
 }
@@ -86,7 +88,7 @@ h3 {
 h4 {
     font-size: 18px;
     margin: 1em 0 .2em;
-    color: #4d4e53;
+    color: $color-h4;
     /* border-bottom: 1px solid #eee; */
     padding-bottom: 8px;
 }
@@ -110,7 +112,7 @@ code,
 kbd,
 samp {
     font-family: Consolas, Monaco, 'Andale Mono', monospace;
-    background: #f4f4f4;
+    background: $color-phraseTag;
     padding: 1px 5px;
     border-radius: 5px;
     font-size: 14px;
@@ -121,5 +123,5 @@ blockquote {
     border-left: 4px solid #eee;
     margin: 0;
     padding-left: 1em;
-    color: #888;
+    color: $color-blockquote;
 }

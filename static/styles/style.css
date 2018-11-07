@@ -15,7 +15,7 @@ body {
 
 body {
   color: #4d4e53;
-  background-color: white;
+  background-color: #fff;
   margin: 0 auto;
   padding: 0;
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
@@ -227,28 +227,12 @@ nav li {
   opacity: .8;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 680px) {
-  .navicon-button {
-    display: inline-block;
-    position: fixed;
-    top: 1.5em;
-    right: 0;
-    z-index: 2;
-  }
-}
-
-.navicon-button .navicon:before,
-.navicon-button .navicon:after {
-  transition: 0.25s;
-}
-
 .navicon-button:hover {
   transition: 0.5s;
   opacity: 1;
 }
 
-.navicon-button:hover .navicon:before,
-.navicon-button:hover .navicon:after {
+.navicon-button:hover .navicon:before, .navicon-button:hover .navicon:after {
   transition: 0.25s;
 }
 
@@ -260,7 +244,20 @@ nav li {
   top: -.825rem;
 }
 
-/* navicon */
+.navicon-button .navicon:before, .navicon-button .navicon:after {
+  transition: 0.25s;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 680px) {
+  .navicon-button {
+    display: inline-block;
+    position: fixed;
+    top: 1.5em;
+    right: 0;
+    z-index: 2;
+  }
+}
+
 .navicon {
   position: relative;
   width: 2.5em;
@@ -270,8 +267,7 @@ nav li {
   border-radius: 2.5rem;
 }
 
-.navicon:before,
-.navicon:after {
+.navicon:before, .navicon:after {
   display: block;
   content: "";
   height: .3125rem;
@@ -447,9 +443,6 @@ header {
 
 .details ul {
   margin: 0;
-}
-
-.details ul {
   list-style-type: none;
 }
 

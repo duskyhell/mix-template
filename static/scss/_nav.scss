@@ -41,12 +41,12 @@ nav li {
 .nav-heading {
     margin-top: 10px;
     font-weight: bold;
-}
 
-.nav-heading a {
-    color: $color-nav-heading-hyperlink;
-    font-size: 14px;
-    display: inline-block;
+    a {
+        color: $color-nav-heading-hyperlink;
+        font-size: 14px;
+        display: inline-block;
+    }
 }
 
 .nav-item-type {
@@ -95,6 +95,31 @@ nav li {
     user-select: none;
     opacity: .8;
 
+    &:hover {
+        transition: 0.5s;
+        opacity: 1;
+
+        .navicon {
+            &:before, &:after{
+                transition: 0.25s;
+            }
+
+            &:before {
+                top: .825rem;
+            }
+
+            &:after {
+                top: -.825rem;
+            }
+        }
+    }
+
+    .navicon {
+        &:before, &:after{
+            transition: 0.25s;
+        }
+    }
+
     @include media-phone-width {
         display: inline-block;
         position: fixed;
@@ -104,30 +129,7 @@ nav li {
     }
 }
 
-.navicon-button .navicon:before,
-.navicon-button .navicon:after {
-    transition: 0.25s;
-}
 
-.navicon-button:hover {
-    transition: 0.5s;
-    opacity: 1;
-}
-
-.navicon-button:hover .navicon:before,
-.navicon-button:hover .navicon:after {
-    transition: 0.25s;
-}
-
-.navicon-button:hover .navicon:before {
-    top: .825rem;
-}
-
-.navicon-button:hover .navicon:after {
-    top: -.825rem;
-}
-
-/* navicon */
 .navicon {
     position: relative;
     width: 2.5em;
@@ -135,30 +137,31 @@ nav li {
     background: #000;
     transition: 0.3s;
     border-radius: 2.5rem;
+
+    &:before, &:after {
+        display: block;
+        content: "";
+        height: .3125rem;
+        width: 2.5rem;
+        background: #000;
+        position: absolute;
+        z-index: -1;
+        transition: 0.3s 0.25s;
+        border-radius: 1rem;
+    }
+
+    &:before {
+        top: .625rem;
+    }
+
+    &:after {
+        top: -.625rem;
+    }
 }
 
-.navicon:before,
-.navicon:after {
-    display: block;
-    content: "";
-    height: .3125rem;
-    width: 2.5rem;
-    background: #000;
-    position: absolute;
-    z-index: -1;
-    transition: 0.3s 0.25s;
-    border-radius: 1rem;
-}
-
-.navicon:before {
-    top: .625rem;
-}
-
-.navicon:after {
-    top: -.625rem;
-}
 
 /* open */
+
 .nav-trigger:checked+label:not(.steps) .navicon:before,
 .nav-trigger:checked+label:not(.steps) .navicon:after {
     top: 0 !important;

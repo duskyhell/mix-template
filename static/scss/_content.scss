@@ -47,10 +47,10 @@ header {
     line-height: 140%;
     margin-bottom: 1em;
     margin-top: 1em;
-}
 
-.class-description:empty {
-    margin: 0
+    &:empty {
+        margin: 0;
+    }
 }
 
 .signature-attributes {
@@ -79,37 +79,37 @@ header {
     margin-top: 14px;
     border-left: 2px solid #DDD;
     line-height: 30px;
+
+    dt {
+        width: 120px;
+        float: left;
+        padding-left: 10px;
+    }
+
+    dd {
+        margin-left: 70px
+    }
+
+    ul {
+        margin: 0;
+        list-style-type: none;
+    }
+
+    li {
+        margin-left: 30px
+    }
+
+    pre {
+        &.prettyprint {
+            margin: 0
+        }
+    }
+
+    .object-value {
+        padding-top: 0
+    }
 }
 
-.details dt {
-    width: 120px;
-    float: left;
-    padding-left: 10px;
-}
-
-.details dd {
-    margin-left: 70px
-}
-
-.details ul {
-    margin: 0
-}
-
-.details ul {
-    list-style-type: none
-}
-
-.details li {
-    margin-left: 30px
-}
-
-.details pre.prettyprint {
-    margin: 0
-}
-
-.details .object-value {
-    padding-top: 0
-}
 
 .description {
     margin-bottom: 1em;
@@ -121,7 +121,6 @@ header {
     font-size: 107%;
     margin: 0;
 }
-
 
 .params,
 .props {
