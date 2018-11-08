@@ -22,7 +22,11 @@
         "default": {
             "outputSourceFiles": true,
             "useLongnameInNav": false
-        }
+        },
+
+        "showInheritedInNav": true,
+        "expandAllCollapsibleItem": false
+
     },
 
     "opts": {

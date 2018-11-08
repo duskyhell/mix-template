@@ -32,15 +32,14 @@ gulp.task('scss', (done) => {
 gulp.task('scss:min', (done) => {
     const stream = gulp
         .src('./static/scss/**/*.scss')
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(
             sass({
                 outputStyle: 'compressed'
             }).on('error', sass.logError)
         )
-        .pipe(sourcemaps.write())
+        // .pipe(sourcemaps.write())
         .pipe(rename({basename:'style.min'}))
-        // .pipe(gulp.dest('./static/scss/'));
         .pipe(gulp.dest('./static/styles/'));
 
     stream.on('end', () => {

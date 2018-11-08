@@ -377,6 +377,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
     if (items && items.length) {
         var itemsNav = ""
 
+        // Group title: Tutorials, Classes,  Modules ...etc
         nav.push(buildNavHeading(itemHeading))
 
         items.forEach(function (item) {
@@ -412,23 +413,49 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
 
                 displayName = displayName.replace(/^module:/g, "")
 
+                /* build items */
                 if (itemHeading === 'Tutorials') {
                     nav.push(buildNavItem(linktoFn(item.longname, displayName)))
+                    itemsSeen[item.longname] = true
+
                 } else {
-                    nav.push(buildNavHeading(buildNavType(item.kind, linktoFn(item.longname, displayName))))
+                    //TODO: default isExpand
+                    //TODO: display order sort
+
+                    let navItem = []
+
+                    if (members.length) {
+                        members.forEach(function (member) {
+                            if (member.inherited & conf.showInheritedInNav === false) {
+                                return
+                            }
+                            navItem.push(buildNavItem(buildNavType(member.kind, linkto(member.longname, member.name))))
+                        })
+                    }
+
+                    if (methods.length) {
+                        methods.forEach(function (method) {
+                            if (method.inherited && conf.showInheritedInNav === false) {
+                                return
+                            }
+
+                            navItem.push(buildNavItem(buildNavType(method.kind, linkto(method.longname, method.name))))
+                        })
+                    }
+
+                    nav.push(
+                        buildNavHeading(
+                            [
+                                buildNavType(item.kind, linktoFn(item.longname, displayName)),
+                                buildCollapsibleNavItem(navItem.join(''), item.name, conf.expandAllCollapsibleItem)
+                            ].join('')
+                        )
+                    )
+
+                    itemsSeen[item.longname] = true
                 }
 
-                if (methods.length) {
-                    methods.forEach(function (method) {
-                        if (method.inherited && conf.showInheritedInNav === false) {
-                            return
-                        }
 
-                        nav.push(buildNavItem(buildNavType(method.kind, linkto(method.longname, method.name))))
-                    })
-                }
-
-                itemsSeen[item.longname] = true
             }
         })
     }
@@ -487,6 +514,30 @@ function buildNavItem(itemContent) {
         '<li class="nav-item">',
         itemContent,
         '</li>'
+    ].join('')
+}
+
+/**
+ * wrap nav item with <ul> then let it collapsible
+ * TODO: maybe insert data-parent: item.longname for search filter
+ * @param {String} itemContent
+ * @param {String} itemName item.name, will be checkBox's id, for auto expand search, see "layout.tmpl"
+ * @param {Boolean} [isExpand = false]
+ * @return {String}
+ */
+function buildCollapsibleNavItem(itemContent, itemName, isExpand) {
+    if (!itemContent || !itemContent.length) return ''
+
+    const checked = isExpand ? 'checked' : ''
+    const id = `${itemName}-collapse`
+
+    return [
+        `<input type="checkbox" id="${id}" ${checked} />`,
+        `<label for=${id}></label>`,
+        '<ul>',
+        itemContent,
+        '</ul>'
+
     ].join('')
 }
 
@@ -597,8 +648,8 @@ exports.publish = function (taffyData, opts, tutorials) {
 
     // copy the template's static files to outdir
     var fromDir = path.join(templatePath, "static")
-    var staticFiles = fs.ls(fromDir, 3)
 
+    var staticFiles = fs.ls(fromDir, 3)
     staticFiles.forEach(function (fileName) {
         var toDir = fs.toDir(fileName.replace(fromDir, outdir))
         fs.mkPath(toDir)

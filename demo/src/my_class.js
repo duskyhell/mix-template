@@ -32,4 +32,41 @@ class MyClass {
     setDesc(desc = '') {
         this.desc = desc;
     }
+
+    /**
+     * @returns {Date}
+     */
+    static getDate() {
+        return new Date();
+    }
+}
+
+/**
+ * Member 1
+ * @static
+ * @type {number}
+ * @memberof MyClass
+ */
+MyClass.member1 = 1;
+
+/**
+ * Member 2
+ * @static
+ * @type {number}
+ * @memberof MyClass
+ */
+MyClass.member2 = 2;
+
+/**
+ * @class MyChildClass
+ * @extends MyClass
+ */
+class MyChildClass extends MyClass {
+    /**
+     * @override
+     * @returns 'no this man'
+     */
+    getName() {
+        return 'no this man';
+    }
 }

@@ -12,8 +12,7 @@
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <!-- <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css"> -->
-    <link type="text/css" rel="stylesheet" href="styles/style.css">
+    <link type="text/css" rel="stylesheet" href="styles/style.min.css">
 </head>
 <body>
 
@@ -26,6 +25,11 @@
 
 <nav>
     <?js= this.nav ?>
+    <script>
+        // auto expand nav
+        const $checkbox = document.querySelector('input[id=<?js=title?>-collapse]')
+        if($checkbox) $checkbox.checked = true;
+    </script>
 </nav>
 
 <div id="main">
@@ -44,5 +48,6 @@
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
+
 </body>
 </html>

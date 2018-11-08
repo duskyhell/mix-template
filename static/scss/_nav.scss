@@ -31,21 +31,76 @@ nav {
     }
 }
 
-nav li {
+nav > li {
     list-style: none;
     padding: 0;
     margin: 0;
-
 }
 
 .nav-heading {
     margin-top: 10px;
     font-weight: bold;
 
+    ul {
+        padding: 0px 0px 0px 0.5em;
+        margin-bottom: 1em;
+        margin-top: 0.5em;
+    }
+
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
     a {
         color: $color-nav-heading-hyperlink;
         font-size: 14px;
         display: inline-block;
+    }
+
+    > input[type=checkbox] {
+        display: none;
+
+        // fold
+        &+label {
+            padding-left: 0.5em;
+
+            // color: white;
+
+            &::before {
+                width: 0;
+                height: 0;
+                display: inline-block;
+                text-align: center;
+                content: '+';
+                color: $color-hyperlink;
+                transition: all $collapse-speed ease;
+            }
+        }
+
+        &~ul {
+            max-height: 0;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: all $collapse-speed ease;
+        }
+
+        &:checked {
+            &+label+ul {
+                max-height: 100%;
+                max-width: 100%;
+                opacity: 1;
+            }
+
+            // expand
+            &+label::before {
+                // transform: rotate(90deg);
+                content: '—';
+            }
+        }
     }
 }
 
@@ -100,22 +155,26 @@ nav li {
         opacity: 1;
 
         .navicon {
-            &:before, &:after{
+
+            &::before,
+            &::after {
                 transition: 0.25s;
             }
 
-            &:before {
+            &::before {
                 top: .825rem;
             }
 
-            &:after {
+            &::after {
                 top: -.825rem;
             }
         }
     }
 
     .navicon {
-        &:before, &:after{
+
+        &::before,
+        &::after {
             transition: 0.25s;
         }
     }
@@ -138,7 +197,8 @@ nav li {
     transition: 0.3s;
     border-radius: 2.5rem;
 
-    &:before, &:after {
+    &::before,
+    &::after {
         display: block;
         content: "";
         height: .3125rem;
@@ -150,11 +210,11 @@ nav li {
         border-radius: 1rem;
     }
 
-    &:before {
+    &::before {
         top: .625rem;
     }
 
-    &:after {
+    &::after {
         top: -.625rem;
     }
 }
@@ -162,13 +222,13 @@ nav li {
 
 /* open */
 
-.nav-trigger:checked+label:not(.steps) .navicon:before,
-.nav-trigger:checked+label:not(.steps) .navicon:after {
+.nav-trigger:checked+label:not(.steps) .navicon::before,
+.nav-trigger:checked+label:not(.steps) .navicon::after {
     top: 0 !important;
 }
 
-.nav-trigger:checked+label .navicon:before,
-.nav-trigger:checked+label .navicon:after {
+.nav-trigger:checked+label .navicon::before,
+.nav-trigger:checked+label .navicon::after {
     transition: 0.5s;
 }
 
@@ -183,14 +243,14 @@ nav li {
     background: transparent;
 }
 
-.nav-trigger:checked+label.plus .navicon:before,
-.nav-trigger:checked+label.x .navicon:before {
+.nav-trigger:checked+label.plus .navicon::before,
+.nav-trigger:checked+label.x .navicon::before {
     transform: rotate(-45deg);
     background: #fff;
 }
 
-.nav-trigger:checked+label.plus .navicon:after,
-.nav-trigger:checked+label.x .navicon:after {
+.nav-trigger:checked+label.plus .navicon::after,
+.nav-trigger:checked+label.x .navicon::after {
     transform: rotate(45deg);
     background: #fff;
 }

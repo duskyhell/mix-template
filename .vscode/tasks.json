@@ -6,7 +6,7 @@
         {
             "label": "gulp buid scss",
             "type": "gulp",
-            "task": "scss",
+            "task": "scss:min",
             "problemMatcher": [],
             "presentation": {
                 "reveal": "silent",
