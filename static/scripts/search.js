@@ -5,6 +5,30 @@ $(document).ready(function () {
     // cache current expanded item
     var expandedItems;
 
+
+    //on typing search
+    $('#nav-search').on('keyup', function (event) {
+        var search = $(this).val();
+
+
+        if (!search) {
+            clearSearchResult()
+
+        } else {
+            find(search);
+        }
+    });
+
+    // check user clicked pseudo cancel button
+    $('#nav-search').on('search', function (event) {
+        if (this.value === '') {
+            clearSearchResult();
+        } else {
+            find(this.value);
+        }
+    });
+
+
     // no search, show all and re-expand
     function clearSearchResult() {
         if (!expandedItems) expandedItems = $('nav > li > input[type=checkbox]:checked');
@@ -49,26 +73,4 @@ $(document).ready(function () {
         });
     }
 
-
-    //on typing search
-    $('#nav-search').on('keyup', function (event) {
-        var search = $(this).val();
-
-
-        if (!search) {
-            clearSearchResult()
-
-        } else {
-            find(search);
-        }
-    });
-
-    // check user clicked pseudo cancel button
-    $('#nav-search').on('search', function (event) {
-        if (this.value === '') {
-            clearSearchResult();
-        } else {
-            find(this.value);
-        }
-    });
 });
