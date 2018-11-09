@@ -24,9 +24,10 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
+    <input type="search" id="nav-search" placeholder="Search" />
     <?js= this.nav ?>
     <script>
-        // auto expand nav
+        // auto expand current nav
         const $checkbox = document.querySelector('input[id=<?js=title?>-collapse]')
         if($checkbox) $checkbox.checked = true;
     </script>
@@ -48,6 +49,7 @@
 
 <script>prettyPrint();</script>
 <script src="scripts/linenumber.js"></script>
-
+<script src="scripts/jquery-3.1.1.min.js"></script>
+<script src="scripts/search.js"></script>
 </body>
 </html>

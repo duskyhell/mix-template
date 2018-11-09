@@ -378,7 +378,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
         var itemsNav = ""
 
         // Group title: Tutorials, Classes,  Modules ...etc
-        nav.push(buildNavHeading(itemHeading))
+        nav.push(buildNavHeading(itemHeading, 'group'))
 
         items.forEach(function (item) {
             var methods = find({
@@ -494,9 +494,9 @@ function buildNavLink(linkClass, linkContent) {
  * @param {String} content navigation header content
  * @return {String}
  */
-function buildNavHeading(content) {
+function buildNavHeading(content, tag='') {
     return [
-        '<li class="nav-heading">',
+        `<li class="nav-heading ${tag}">`,
         content,
         '</li>'
     ].join('')

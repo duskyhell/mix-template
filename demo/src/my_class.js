@@ -22,7 +22,7 @@ class MyClass {
 
     /**
      * set description
-     * @param {string} [desc = '']
+     * @param {string} [desc = ''] long description long long long long long long long long
      * @example
      * const myClass = new MyClass();
      * myClass.setDesc('blablabla');
